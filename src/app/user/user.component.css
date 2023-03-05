@@ -1,0 +1,14 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.btn{
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+}
+
+.container{
+  box-sizing: border-box;
+  margin:0 15px ;
+}

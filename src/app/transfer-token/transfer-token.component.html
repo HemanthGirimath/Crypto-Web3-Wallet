@@ -1,0 +1,51 @@
+<div class="container">
+    <mat-card>
+        <div class="action-btns">
+            <button mat-raised-button (click)="sendTransaction()" color="primary" class="send-btn">Send</button>
+            <button mat-raised-button color="primary" (click)="reciveTransaction()">Recive</button>
+        </div>
+        <div>
+            <ng-container *ngIf="sendBtnClicked">
+                <form class="form" [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+                  
+                     
+                    <mat-form-field appearance="fill">
+                        <mat-label>TO</mat-label>
+                        <input matInput placeholder="Enter To address.." type="text" formControlName="To">
+                    </mat-form-field>
+    
+                    <mat-form-field>
+                        <mat-label >Pay-With</mat-label>
+                        <mat-select formControlName ="Pay">
+                            <mat-option *ngFor="let tkn of token" [value]="tkn.token_address">
+                                {{tkn.symbol}} {{tkn.balance}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                      <mat-form-field appearance="fill">
+                        <mat-label>AMT</mat-label>
+                        <input matInput placeholder="Enter From address.." type="text" formControlName="amt">
+                    </mat-form-field>
+
+                    <button  mat-raised-button  color="warn" type="submit" [disabled]="!this.transferForm.valid">Transfer</button>
+                </form>
+                
+
+                <div class="token-dsp">
+                    <div class="Bal">Balances</div>
+                    <div class="bal-dsp">
+                        <div class="tkn">Sol</div>
+                        <div class="val">0</div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="reciveBtnClicked">
+                <h1>recive btn clicked</h1>
+            </ng-container>
+           
+        </div>
+      
+    </mat-card>
+</div>

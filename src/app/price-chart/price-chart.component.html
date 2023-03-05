@@ -1,0 +1,22 @@
+
+<div class="container">
+    <form [formGroup]="GraphForm">
+        <mat-form-field >
+            <mat-label>Select Token</mat-label>
+            <mat-select formControlName="tkn">
+                <mat-option *ngFor="let tkn of tokens" [value]="tkn.contractAddress">{{tkn.token}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+   
+        <mat-radio-group aria-label="Select an option" value="6" formControlName="day">
+            <mat-radio-button value="6">6 days</mat-radio-button>
+            <mat-radio-button value="9">9 days</mat-radio-button>
+            <mat-radio-button value="12">12 days</mat-radio-button>
+        </mat-radio-group>
+    </form>
+    <button (click)="price()">Price</button>
+</div>
+<div class="graph-view">
+    <canvas id="canvas" width="600px" height="250px"></canvas>
+</div>
+

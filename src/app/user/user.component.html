@@ -1,0 +1,28 @@
+<!-- <div *ngIf="session">
+    <h3>User session:</h3>
+    <pre>{{ session }}</pre>
+    <button type="button" (click)="signOut()">Sign out</button>
+</div>
+<div>
+  <h1>Balaces : {{portFolioBalance}}</h1>
+</div>
+ -->
+
+ <mat-toolbar color="primary">
+  <span class="example-spacer">Crypto Wallet</span>
+  <div class="btn">
+    <span >{{portFolioBalance}}</span>
+    <span>{{walletAddress?.substring(0,5)}}...{{walletAddress?.substring(38,42)}}</span>
+    <button type="button" (click)="signOut()">Sign out</button>
+  </div>
+</mat-toolbar>
+
+<div class="container">
+  <mat-tab-group>
+    <mat-tab label="Transfer"> <app-transfer-token></app-transfer-token> </mat-tab>
+    <mat-tab label="HistroicPrice"> <app-price-chart></app-price-chart></mat-tab>
+    <mat-tab label="SwapToken"> Content 3 </mat-tab>
+  </mat-tab-group>
+
+</div>
+

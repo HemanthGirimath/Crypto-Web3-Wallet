@@ -1,0 +1,21 @@
+.container{
+    max-width: 600px;
+    max-height: 900px;
+    margin: 15px auto;
+}
+
+form{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mat-radio-button{
+    margin-left: 16px;
+}
+.graph-view{
+    display: grid;
+    place-items: center;
+    margin: 10px;
+}

@@ -5,7 +5,7 @@ import { ThirdwebSDK } from '@thirdweb-dev/sdk';
 import { environment } from 'src/environments/environment';
 import axios from 'axios';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { LoaderService } from './loader.service';
 
 export interface ResponseType{
   config:string,
@@ -20,12 +20,13 @@ export interface ResponseType{
 })
 
 export class MoralisService {
+  [x: string]: any;
 //Varaiables
   userSession:any
   chain:any
   tknPrice:any = [];
  
-constructor(private http:HttpClient) { }
+constructor(private loader:LoaderService ,private http:HttpClient) { }
 
 // Creating wagmi Clinet
 Client = createClient({
@@ -58,15 +59,19 @@ getchain(){
 async TransferTokens(walletAddress:string,amt:number,contractAddress:string,chain:string){
   this.getchain();
   console.log("Transaction in processs....")
+  console.log(walletAddress,amt,contractAddress)
   try{
-  const privateKey = environment.PrivateKey;
-  const sdk = ThirdwebSDK.fromPrivateKey(privateKey, chain);
-  await sdk.wallet.transfer(walletAddress, amt,contractAddress );// add dynamic walletaddress and contract address
+  let privateKey =  environment.PrivateKey;
+  let sdk =  ThirdwebSDK.fromPrivateKey(privateKey, chain);
+  await sdk.wallet.transfer(walletAddress, amt,contractAddress );
   console.log("Transactions completed..")
+  // this.loader.isLoading.next(false)
   }
   catch(error){
   console.log(error)
+  
   }
+  this.loader.isLoading.next(false)
 }
 
 //Get all tokens for wallet

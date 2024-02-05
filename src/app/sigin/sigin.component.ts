@@ -8,6 +8,7 @@ import { signMessage } from '@wagmi/core';
 import { environment } from 'src/environments/environment';
 import { MoralisService } from '../moralis.service';
 
+
 @Component({
   selector: 'app-sigin',
   templateUrl: './sigin.component.html',
@@ -16,7 +17,6 @@ import { MoralisService } from '../moralis.service';
 export class SiginComponent implements OnInit {
   portFolioBalance:number
   constructor(private router:Router, private service:MoralisService) { }
-  
   
   
   async handleAuth() {
@@ -56,10 +56,8 @@ export class SiginComponent implements OnInit {
     this.router.navigateByUrl('user');
   }
 
- 
 
   ngOnInit() {
-    
   }
 
 }

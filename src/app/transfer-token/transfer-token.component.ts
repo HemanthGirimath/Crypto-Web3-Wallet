@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LoaderService } from '../loader.service';
 import { MoralisService } from '../moralis.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import axios from 'axios';
+import { environment } from 'src/environments/environment';
 
 interface Token {
   symbol:any,
@@ -18,6 +20,7 @@ export class TransferTokenComponent implements OnInit {
   reciveBtnClicked:boolean = false
   TokenData:any
   selectedValue:any
+  portFolioBalance:any
 
   transferForm = new FormGroup({
     amt:new FormControl(''),
@@ -25,7 +28,7 @@ export class TransferTokenComponent implements OnInit {
     Pay : new FormControl(''),
   })
 
-  constructor(private service:MoralisService) { }
+  constructor(private service:MoralisService, public loader:LoaderService) { }
   token:any
 
   sendTransaction(){
@@ -54,29 +57,39 @@ export class TransferTokenComponent implements OnInit {
   
   async tokenTransfer(){
   const data = await this.service.getUserData()
-  // const chain = ((data.chain === 80001) ? 'mumbai' : 'eth')
-  // const walletAddress = this.to.value;
-  // const amt = this.AMT.value
-  // const contractAddress = this.TknAddress.value;
-  // this.service.TransferTokens(walletAddress,amt,contractAddress,chain);
- 
   const token = await this.service.getTokens(data);
   this.token = await token.data
-    
   }
 
   async onSubmit(){
-  const data = await this.service.getUserData()
+    this.loader.isLoading.next(true)
+    const data = await this.service.getUserData()
     const chain = ((data.chain === 80001) ? 'mumbai' : 'eth');
     const walletAddress = this.to.value;
     const amt = this.AMT.value
     const contractAddress = this.TknAddress.value;
   this.service.TransferTokens(walletAddress,amt,contractAddress,chain); 
   this.transferForm.reset(); 
+
+  }
+  async getbalances(){
+    const Data = await this.service.getUserData();
+    const userData={
+      address:Data.address,
+      chain:Data.chain,
+      network:'evm',
+    };
+    const  value:any  = await axios.post(
+      `${environment.SERVER_URL}/balances`,
+      userData
+    );
+    const bal = value.data.balance/(1000000000000000000);
+    this.portFolioBalance = bal.toFixed(2);
   }
 
   ngOnInit() {
     this.tokenTransfer();
+    this.getbalances();
   }
 
 }

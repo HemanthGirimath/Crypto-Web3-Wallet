@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserComponent } from './user.component';
+import { AngScrappyComponent } from './ang-scrappy.component';
 
-describe('UserComponent', () => {
-  let component: UserComponent;
-  let fixture: ComponentFixture<UserComponent>;
+describe('AngScrappyComponent', () => {
+  let component: AngScrappyComponent;
+  let fixture: ComponentFixture<AngScrappyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserComponent ]
+      declarations: [ AngScrappyComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserComponent);
+    fixture = TestBed.createComponent(AngScrappyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

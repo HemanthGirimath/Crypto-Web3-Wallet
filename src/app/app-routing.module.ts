@@ -10,11 +10,15 @@ const routes: Routes = [
   {path:'balances',component:BalancesComponent},
   {path:'signin',component:SiginComponent},
   {path:'user',component:UserComponent},
-  {path:'transfer',component:TransferTokenComponent}
+  {path:'transfer',component:TransferTokenComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{anchorScrolling:'enabled'})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+  
+
+}
+

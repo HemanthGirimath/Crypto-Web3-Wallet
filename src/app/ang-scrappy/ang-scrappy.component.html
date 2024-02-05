@@ -1,0 +1,16 @@
+<div>
+  <div class="main-card">
+    <div *ngFor="let article of displayedArticles.slice((currentPage - 1) * articlesPerPage, currentPage * articlesPerPage)">
+      <mat-card class="article-card">
+        <mat-card-title>{{ article.title.substring(0,35) }}....</mat-card-title>
+        <mat-card-subtitle>{{ article.published_date|date }}</mat-card-subtitle>
+        <mat-card-actions>
+          <a mat-button href="{{ article.link }}" target="_blank">Read More</a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <mat-paginator [length]="displayedArticles.length" [pageSize]="articlesPerPage" (page)="currentPage = $event.pageIndex + 1">
+  </mat-paginator>
+</div>
+

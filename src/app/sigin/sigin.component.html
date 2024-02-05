@@ -1,4 +1,149 @@
+<div class="main-div">
 
-<div class="container">
-    <button type="button" mat-raised-button color="accent" (click)="handleAuth()" class="btn" >MetaMask Login</button>
-</div>
+    <div class="hero-container">
+        <div class="bck-img">
+            <img src="../../assets/zoltan-tasi-uNXmhzcQjxg-unsplash.jpg" alt="bck-img">
+        </div>
+        <div class="nav">
+                <ul class="nav-item">
+                    <li> 
+                        <a [routerLink]="['/wallet']" fragment="wallet">Wallet </a>
+                    </li>
+                    <li>
+                         <a href="#transfer" >Transfer</a>
+                    </li>
+                    <li> 
+                        <a href="#price" >Historic Price</a>
+                    </li>
+                    <li>
+                        <a href="#news" >News Feed</a>
+                    </li>
+                </ul>
+        </div>
+        <div class="txt-over-img">
+          
+            <h1 class="hero1">A seamless experience for </h1>
+            <h1 class="hero2">web3 wallet users</h1>
+            <p>Discover the power of a single platform designed exclusively for web3 wallet users. connect,
+                transfer tokens,and stay updated on token price chart with ease.
+            </p>
+           <div class="btn-container">
+                <button mat-raised-button color="accent" class="btn" type="button" (click)="handleAuth()">MetaMask Login</button>
+                <button mat-raised-button color="primary">Learn More</button>
+           </div>
+        </div>
+    </div>
+    <!-- CONNECT YOU WALLET -->
+    <div class="feature-container">
+        
+            <div id="target" class="left1">
+                <div class="left" >
+                 <h1>Connect your web3 </h1>
+                 <h1>wallet with easy</h1>
+                 <div class="para">
+                     <p> Our platform allows you to seamlessly integerate your web3 wallet,making
+                         it effortless to access and manage your digital assets
+                     </p>
+                 </div>
+                 <div class="list">
+                     <ul>
+                         <li>Securely connect your wallet in seconds</li>
+                         <li>Effortless manage your digital assets</li>
+                         <li>Experience seameless web3 wallet integeration</li>
+                     </ul>
+                 </div>
+                 <div>
+                     <button mat-raised-button color="primary">sign UP</button>
+                     
+                 </div>
+                </div>
+             </div>
+        <div class="right1">
+            <img src="../../assets/imges/What are Ethereum wallets_.jpg" alt="">
+        </div>
+        <!-- 2nd -->
+        <div class="left2" id="transfer">
+            <div class="left">
+             <h1>Transfer Tokens Made  </h1>
+             <h1>Easy and Secure</h1>
+             <div class="para">
+                 <p>With our web3 wallet, you can securely transfer tokens with ease. 
+                    Say goodbye to complicated processes and hello to simplicity and security.
+                 </p>
+             </div>
+             <div class="list">
+                 <ul>
+                   <li>
+                    Analyze the historical token price trends to identify patterns
+                   </li>
+                <li>
+                    Examine the historical trends in token prices to identify patterns
+                </li>
+                    
+                 </ul>
+             </div>
+             <div>
+                 <button mat-raised-button color="primary">sign UP</button>
+                 
+             </div>
+            </div>
+         </div>
+         <div class="right2">
+             <img src="../../assets/imges/Menjelajahi-web3-wallet.png" alt="">
+         </div>
+         <!-- 3rd -->
+         <div class="left3" id="price">
+            <div class="left">
+             <h1>Explore Historical Token  </h1>
+             <h1>Price with Interactive Charts</h1>
+             <div class="para">
+                 <p>Analyze the historical token price trends to identify patterns 
+                    and make well-informed decisions based on a comprehensive understanding of market behavior.
+                 </p>
+             </div>
+             <div class="list">
+                 <ul>
+                     <li>Bitcoin</li>
+                     <li>Ethereum</li>
+                     <li>Solana</li>
+                    
+                 </ul>
+             </div>
+             <div>
+                 <button mat-raised-button color="primary">sign UP</button>
+                 
+             </div>
+            </div>
+         </div>
+         <div class="right3">
+             <img src="../../assets/imges/dacd035f67916b2dbe8e9322003ec1c8.jpg" alt="">
+         </div>
+         <!-- 4th -->
+         <div class="left4" id="news">
+            <div class="left">
+             <h1>Stay Updated with the </h1>
+             <h1>Latest Cryptocurrency News</h1>
+             <div class="para">
+                 <p>Get the latest updates, trends, and insights in the cryptocurrency space. 
+                    Stay informed about new projects, market movements, and industry developments.
+                 </p>
+             </div>
+             <div class="list">
+                 <ul>
+                     <li>Breaking News</li>
+                     <li>Expert Analysis</li>
+                   
+                 </ul>
+             </div>
+             <div>
+                 <button mat-raised-button color="primary">sign UP</button>
+                 
+             </div>
+            </div>
+         </div>
+         <div class="right4">
+             <img src="../../assets/imges/772999a92139df26bfcfc8a64b4874e0.avif" alt="">
+         </div>
+        
+    </div>
+    

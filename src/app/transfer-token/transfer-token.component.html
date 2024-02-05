@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" >
     <mat-card>
         <div class="action-btns">
             <button mat-raised-button (click)="sendTransaction()" color="primary" class="send-btn">Send</button>
@@ -18,7 +18,7 @@
                         <mat-label >Pay-With</mat-label>
                         <mat-select formControlName ="Pay">
                             <mat-option *ngFor="let tkn of token" [value]="tkn.token_address">
-                                {{tkn.symbol}} {{tkn.balance}}
+                                 {{tkn.balance/1000000000000000000}} {{tkn.symbol}} {{tkn.logo}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -35,14 +35,17 @@
                 <div class="token-dsp">
                     <div class="Bal">Balances</div>
                     <div class="bal-dsp">
-                        <div class="tkn">Sol</div>
-                        <div class="val">0</div>
+                        <div class="tkn">Sol:-</div>
+                        <div class="val"> {{ portFolioBalance }}</div>
                     </div>
+                    <app-loader class="loder" *ngIf="loader.isLoading | async"></app-loader>
                 </div>
             </ng-container>
 
             <ng-container *ngIf="reciveBtnClicked">
-                <h1>recive btn clicked</h1>
+                <div class="qrcode">
+                    <img [src]="'/assets/qrcode.png'" alt="QR-CODE">
+                </div>
             </ng-container>
            
         </div>

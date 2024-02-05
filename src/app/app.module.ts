@@ -5,8 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BalancesComponent } from './balances/balances.component';
 import { SiginComponent } from './sigin/sigin.component';
-import { UserComponent } from './user/user.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TransferTokenComponent } from './transfer-token/transfer-token.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -22,15 +21,23 @@ import { PriceChartComponent } from './price-chart/price-chart.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { LoaderComponent } from './loader/loader.component';
+import { UserComponent } from './user/user.component';
+import { IntercepterService } from './intercepter.service';
+import { AngScrappyComponent } from './ang-scrappy/ang-scrappy.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 @NgModule({
   declarations: [
     AppComponent,
     BalancesComponent,
     SiginComponent,
-    UserComponent,
+    
     TransferTokenComponent,
-    PriceChartComponent
+    PriceChartComponent,
+    LoaderComponent,
+    UserComponent,
+    AngScrappyComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +55,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     MatRadioModule,
     FormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    ScrollToModule
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:IntercepterService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

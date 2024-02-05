@@ -55,19 +55,6 @@ export class UserComponent implements OnInit {
   
   async ngOnInit() {
     this.getBalances();
-  
-    // this.server.getContracts().then(data=>{
-    //   const getTokens = data;
-    //   getTokens.map(x=>{
-    //     if(x.contractType === "token"){
-    //       this.TokenContractAddress = x
-    //     }
-    //     else{
-    //      this.TokenContractAddress = data
-    //     }
-    //   })
-    // })
-
     try {
       const { data } = await axios.get(
         `${environment.SERVER_URL}/authenticate`,

@@ -1,4 +1,6 @@
 const Moralis = require('moralis').default;
+const { exec } = require('child_process');
+const axios = require('axios');
 
 const express = require('express');
 const cors = require('cors');
@@ -11,6 +13,7 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
+
 app.use(cookieParser());
 
 // allow access to Angular app domain
@@ -168,6 +171,22 @@ app.post('/token',async(req,res)=>{
   
 })
 
+app.get('/execute-python-script', (req, res) => {
+  // Execute the Python script
+  exec('python D:\\sofwares\\projects\\web3.0\\python\\scrapper.py', (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error executing Python script: ${error}`);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    // Assuming the Python script generates a JSON fileN
+    const articles = require('D:\\sofwares\\projects\\web3.0\\Angular-moralis-auth\\src\\assets\\all_articles.json');
+    res.json({ articles });
+  });
+});
+
+
+
 const startServer = async () => {
   await Moralis.start({
     apiKey: process.env.MORALIS_API_KEY,
@@ -177,5 +196,7 @@ const startServer = async () => {
     console.log(`Example app listening on port ${port}`);
   });
 };
+
+
 
 startServer();

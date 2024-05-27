@@ -64,7 +64,7 @@ export class TransferTokenComponent implements OnInit {
   async onSubmit(){
     this.loader.isLoading.next(true)
     const data = await this.service.getUserData()
-    const chain = ((data.chain === 80001) ? 'mumbai' : 'eth');
+    const chain =data.chain
     const walletAddress = this.to.value;
     const amt = this.AMT.value
     const contractAddress = this.TknAddress.value;

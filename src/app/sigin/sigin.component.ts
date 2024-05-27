@@ -25,9 +25,9 @@ export class SiginComponent implements OnInit {
     const userData={
       address:Data.address,
       chain:Data.chain,
-      network:'evm',
+      // network:'evm',
     };
-
+    console.log(userData)
     // const  value:number  = await axios.post(
     //   `${environment.SERVER_URL}/balances`,
     //   userData

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { getDefaultProvider } from 'ethers';
-import { createClient,connect,disconnect,getAccount,InjectedConnector } from '@wagmi/core';
-import { ThirdwebSDK } from '@thirdweb-dev/sdk';
+import { createClient,connect,disconnect,getAccount,InjectedConnector, chainId } from '@wagmi/core';
+import { ChainId, ChainOrRpc, ThirdwebSDK } from '@thirdweb-dev/sdk';
 import { environment } from 'src/environments/environment';
 import axios from 'axios';
 import { HttpClient } from '@angular/common/http';
@@ -56,13 +56,13 @@ getchain(){
 };
 
 // //Token Transfer Functions
-async TransferTokens(walletAddress:string,amt:number,contractAddress:string,chain:string){
+async TransferTokens(walletAddress:string,amt:number,contractAddress:string,chain:number){
   this.getchain();
   console.log("Transaction in processs....")
   console.log(walletAddress,amt,contractAddress)
   try{
   let privateKey =  environment.PrivateKey;
-  let sdk =  ThirdwebSDK.fromPrivateKey(privateKey, chain);
+  let sdk =  ThirdwebSDK.fromPrivateKey(privateKey, chain );
   await sdk.wallet.transfer(walletAddress, amt,contractAddress );
   console.log("Transactions completed..")
   // this.loader.isLoading.next(false)

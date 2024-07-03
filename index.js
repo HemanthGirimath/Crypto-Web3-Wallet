@@ -46,7 +46,7 @@ app.post('/request-message', async (req, res) => {
     res.status(200).json(message);
   } catch (error) {
     res.status(400).json({ error: error.message });
-    console.error(error);
+    console.error(error);   
   }
 });
 

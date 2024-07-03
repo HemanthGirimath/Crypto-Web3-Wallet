@@ -62,9 +62,12 @@ async TransferTokens(walletAddress:string,amt:number,contractAddress:string,chai
   console.log(walletAddress,amt,contractAddress)
   try{
   let privateKey =  environment.PrivateKey;
-  let sdk =  ThirdwebSDK.fromPrivateKey(privateKey, chain );
+  let sdk =  ThirdwebSDK.fromPrivateKey(`${privateKey}`,"https://rpc-amoy.polygon.technology/" ); 
   await sdk.wallet.transfer(walletAddress, amt,contractAddress );
   console.log("Transactions completed..")
+
+
+  
   // this.loader.isLoading.next(false)
   }
   catch(error){
